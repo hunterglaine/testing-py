@@ -2,13 +2,24 @@
 
 from flask import Flask, session, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
+import doctest
 
 app = Flask(__name__)
 app.secret_key = "SECRETSECRETSECRET"
 
 
 def is_mel(name, email):
-    """Is this user Mel?"""
+    """Is this user Mel?
+    
+    >>> is_mel('Mel Melitpolski', 'mel@ubermelon.com')
+    True
+    >>> is_mel('Judith Butler', 'judith@awesome.com')
+    False
+    >>> is_mel('Mel Melitpolski', 'somethingelse@gmail.com')
+    True
+    >>> is_mel('John Doe', 'mel@ubermelon.com')
+    True
+    """
 
     return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
 
